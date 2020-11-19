@@ -14,9 +14,16 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Test') {
+        stage('Test - 1') {
             steps {
                 sh './jenkins/scripts/test.sh'
+            }
+        }
+        stage('Deliver') {
+            steps {
+                sh './jenkins/scripts/deliver.sh'
+                input message: 'Avez-vous terminer avec ce site? (Cliquer sur "Proceed" pour continuer)'
+                sh './jenkins/scripts/kill.sh'
             }
         }
     }
