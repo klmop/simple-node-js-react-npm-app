@@ -22,7 +22,8 @@ pipeline {
         stage('Deliver') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
-                input message: 'Avez-vous terminer avec ce site? (Cliquer sur "Proceed" pour continuer)'
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                input message: 'Voulez-vous continuer le build? (Cliquer sur "Proceed" pour continuer)'
                 sh './jenkins/scripts/kill.sh'
             }
         }
