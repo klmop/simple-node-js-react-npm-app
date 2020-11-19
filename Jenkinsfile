@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'readytalk/nodejs'
+            image 'node:readytalk/nodejs'
             args '-p 3000:3000'
         }
     }
